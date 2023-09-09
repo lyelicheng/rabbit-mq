@@ -1,13 +1,13 @@
-package com.llye.mq.rabbitmq;
+package com.llye.mq.rabbitmq.producer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RabbitMqApplication {
+public class RabbitMqProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RabbitMqApplication.class, args);
+		SpringApplication.run(RabbitMqProducerApplication.class, args);
 	}
 
 }

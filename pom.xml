@@ -8,18 +8,27 @@
 		<version>3.1.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.llye.mq</groupId>
 	<artifactId>rabbit-mq</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>rabbit-mq</name>
 	<description>Demo project for RabbitMQ</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.yaml</groupId>
+					<artifactId>snakeyaml</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -46,5 +55,10 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<modules>
+		<module>consumer</module>
+		<module>producer</module>
+	</modules>
 
 </project>
