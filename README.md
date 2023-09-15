@@ -35,4 +35,63 @@ Password: `guest`
 **Notes:**
 To have the RabbitMQ server operational, we must first terminate the ActiveMQ service (if any) since they both share port 1883.
 
+### Configure RabbitMQ
+
+#### Create Dead Letter Exchange
+
+Create a Dead Letter Exchange `poc-dead-letter-exchange` with below properties:
+```
+Type: fanout
+Durability: durable
+Auto delete: no
+Internal: yes
+```
+**Notes:**
+Dead Letter Exchange is dedicated to redirect the rejected messages.
+
+![Dead Letter Exchange](image/dead_letter_exchange.png)
+
+#### Create Queue and Dead Letter Queue
+
+Create a queue `poc-rabbit-queue` to store the incoming requests with below properties:
+```
+Durability: durable
+Auto delete: no
+Arguments:
+- x-queue-mode=lazy
+- x-dead-letter-exchange=poc-dead-letter-exchange
+```
+
+![POC Rabbit Queue](image/poc_rabbit_queue.png)
+
+Create a Dead Letter Queue (DLQ) `poc-rabbit-queue-dlq` to store the rejected messages with below properties:
+```
+Durability: durable
+Auto delete: no
+Arguments:
+- x-queue-mode=lazy
+```
+
+![POC Rabbit Queue DLQ](image/poc_rabbit_queue_dlq.png)
+
+#### Binding to the Queues
+
+1. `poc-rabbit-queue`
+```
+From exchange: amq.direct
+Routing key: poc-rabbit-queue
+```
+
+![POC Rabbit Queue Binding](image/poc_rabbit_queue_binding.png)
+
+2. `poc-rabbit-queue-dlq`
+```
+From exchange: poc-dead-letter-exchange
+```
+
+![POC Rabbit Queue DLQ Binding](image/poc_rabbit_queue_dlq_binding.png)
+
+## Reference
+https://medium.com/nerd-for-tech/dead-letter-exchanges-at-rabbitmq-net-core-b6348122460d
+
 
