@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 public class MessageProducer {
     private static final Logger LOG = LoggerFactory.getLogger(MessageProducer.class);
 
-    private final RabbitTemplate rabbitTemplate;
     private final Queue queue;
+    private final RabbitTemplate rabbitTemplate;
 
     @Autowired
-    public MessageProducer(RabbitTemplate rabbitTemplate, @Value("${spring.rabbitmq.queue}") Queue queue) {
-        this.rabbitTemplate = rabbitTemplate;
+    public MessageProducer(@Value("${spring.rabbitmq.queue}") Queue queue, RabbitTemplate rabbitTemplate) {
         this.queue = queue;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     public void send(String message) {

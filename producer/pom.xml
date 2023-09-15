@@ -15,7 +15,7 @@
 	<description>Demo project for RabbitMQ Producer</description>
 	<properties>
 		<java.version>17</java.version>
-		<lombok.version>1.18.24</lombok.version>
+		<lombok.version>1.18.28</lombok.version>
 		<jackson-databind.version>2.15.2</jackson-databind.version>
 	</properties>
 
@@ -26,6 +26,7 @@
 			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
