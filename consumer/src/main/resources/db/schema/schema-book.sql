@@ -4,6 +4,6 @@ CREATE TABLE book (
     author VARCHAR(255) NOT NULL,
     genre VARCHAR(255),
     published_year INT,
-    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

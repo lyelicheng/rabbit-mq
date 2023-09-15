@@ -33,10 +33,10 @@ public class Book {
     @Column(name = "published_year")
     private Integer publishedYear;
 
-    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @Column(name = "created_at", nullable = false)
     private ZonedDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @Column(name = "updated_at", nullable = false)
     private ZonedDateTime updatedAt;
 
     @PrePersist
